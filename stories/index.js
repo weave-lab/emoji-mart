@@ -53,6 +53,17 @@ storiesOf('Picker', module)
     />
   ))
 
+  .add('Picker with onSelect (issue #313)', () => {
+    const addEmoji = e => {
+      console.log(localStorage.getItem('emoji-mart.frequently'));
+      if (e.unified.length <= 5) {
+        let emojiPic = String.fromCodePoint(`0x${e.unified}`);
+        console.log(emojiPic);
+      }
+    };
+    return (<Picker onSelect={this.addEmoji} />)
+  })
+
   .add('Custom “Not found” component', () => (
     <Picker
       notFound={() => (
